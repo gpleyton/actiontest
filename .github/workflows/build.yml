@@ -17,3 +17,6 @@ jobs:
 
     - name: Debug Version
       run: echo "Version is $VERSION"
+
+    - name: ser version form tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >>$GITHUB_ENV

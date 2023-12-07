@@ -1,5 +1,7 @@
 name: Build
 
+env:
+  VERSION: ¨0.0.1¨
 on:
   push:
     branches:
@@ -11,7 +13,7 @@ jobs:
 
     steps:
     - name: Set Version
-      run: echo "VERSION=1.2.3" >> $GITHUB_ENV
+      run: echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
     - name: Debug Version
       run: echo "Version is $VERSION"

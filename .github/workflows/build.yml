@@ -1,26 +1,22 @@
-name: Build
+name: Build and Deploy
 
-env:
-  VERSION: ¨0.0.1¨
 on:
   push:
-    branches:
-      - main
-
     tags:
-      - 'v*' 
+      - 'v*'  # Ejecutar el flujo de trabajo solo en los tags que empiezan con 'v'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-    # steps:
-    # - name: Set Version
-    #   run: echo "VERSION=${VERSION}" >> $GITHUB_ENV
+    - name: Set Version
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
 
-
-    - name: ser version form tag
-    run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >>$GITHUB_ENV
-
-      - name: Debug Version
+    - name: Display Version
       run: echo "Version is $VERSION"
+
+    # Añade aquí tus pasos adicionales, por ejemplo, construir y desplegar tu aplicación

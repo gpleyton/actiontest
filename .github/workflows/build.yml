@@ -7,16 +7,20 @@ on:
     branches:
       - main
 
+    tags:
+      - 'v*' 
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Set Version
-      run: echo "VERSION=${VERSION}" >> $GITHUB_ENV
+    # steps:
+    # - name: Set Version
+    #   run: echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
-    - name: Debug Version
-      run: echo "Version is $VERSION"
 
     - name: ser version form tag
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >>$GITHUB_ENV
+    run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >>$GITHUB_ENV
+
+      - name: Debug Version
+      run: echo "Version is $VERSION"

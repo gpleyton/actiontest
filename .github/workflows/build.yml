@@ -2,6 +2,8 @@ name: Build and Deploy
 
 on:
   push:
+    branches: [ main ]
+
     tags:
       - 'v*'  # Ejecutar el flujo de trabajo solo en los tags que empiezan con 'v'
 
